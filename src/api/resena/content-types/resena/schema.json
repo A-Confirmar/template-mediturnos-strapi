@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "resenas",
+  "info": {
+    "singularName": "resena",
+    "pluralName": "resenas",
+    "displayName": "resena"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "calificacion": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "comentario": {
+      "type": "text"
+    },
+    "fecha": {
+      "type": "datetime"
+    },
+    "estado": {
+      "type": "enumeration",
+      "enum": [
+        "pendiente",
+        "aprobada",
+        "rechazada"
+      ]
+    },
+    "motivo_rechazo": {
+      "type": "text"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "resenas"
+    },
+    "profesional": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::profesional.profesional",
+      "inversedBy": "resenas"
+    },
+    "turno": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::turno.turno",
+      "inversedBy": "resena"
+    }
+  }
+}

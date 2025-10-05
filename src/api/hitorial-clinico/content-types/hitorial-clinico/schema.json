@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hitorial_clinicos",
+  "info": {
+    "singularName": "hitorial-clinico",
+    "pluralName": "hitorial-clinicos",
+    "displayName": "hitorialClinico"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "diagnostico": {
+      "type": "blocks"
+    },
+    "tratamiento": {
+      "type": "blocks"
+    },
+    "observaciones": {
+      "type": "text"
+    },
+    "archivo_pdf": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "fecha": {
+      "type": "datetime"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "hitorial_clinicos"
+    },
+    "profesional": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::profesional.profesional",
+      "inversedBy": "hitorial_clinicos"
+    },
+    "turno": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::turno.turno",
+      "inversedBy": "hitorial_clinico"
+    }
+  }
+}

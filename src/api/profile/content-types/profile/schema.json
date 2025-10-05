@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "profiles",
+  "info": {
+    "singularName": "profile",
+    "pluralName": "profiles",
+    "displayName": "profile"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dni": {
+      "type": "string",
+      "unique": true
+    },
+    "telefono": {
+      "type": "string"
+    },
+    "direccion": {
+      "type": "string"
+    },
+    "fecha_nacimiento": {
+      "type": "date"
+    },
+    "tipo_usuario": {
+      "type": "enumeration",
+      "enum": [
+        "paciente",
+        "profesional",
+        "administrador"
+      ]
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "profile"
+    }
+  }
+}

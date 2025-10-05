@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "turnos",
+  "info": {
+    "singularName": "turno",
+    "pluralName": "turnos",
+    "displayName": "turno"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fecha": {
+      "type": "datetime"
+    },
+    "hora_inicio": {
+      "type": "time"
+    },
+    "hora_fin": {
+      "type": "time"
+    },
+    "estado": {
+      "type": "enumeration",
+      "enum": [
+        "pendiente",
+        "confirmado",
+        "completado",
+        "cancelado"
+      ]
+    },
+    "tipo": {
+      "type": "enumeration",
+      "enum": [
+        "regular",
+        "express"
+      ]
+    },
+    "motivo": {
+      "type": "string"
+    },
+    "observaciones": {
+      "type": "text"
+    },
+    "costo": {
+      "type": "decimal"
+    },
+    "respuesta_profesional": {
+      "type": "text"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "turnos"
+    },
+    "profesional": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::profesional.profesional",
+      "inversedBy": "turnos"
+    },
+    "resena": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::resena.resena",
+      "mappedBy": "turno"
+    },
+    "hitorial_clinico": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hitorial-clinico.hitorial-clinico",
+      "mappedBy": "turno"
+    }
+  }
+}

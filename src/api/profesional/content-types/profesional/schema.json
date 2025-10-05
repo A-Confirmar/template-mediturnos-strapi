@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "profesionals",
+  "info": {
+    "singularName": "profesional",
+    "pluralName": "profesionals",
+    "displayName": "profesional"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre_completo": {
+      "type": "string",
+      "required": true
+    },
+    "especialidad": {
+      "type": "string",
+      "required": true
+    },
+    "matricula": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "descripcion": {
+      "type": "text"
+    },
+    "foto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "calificacion_promedio": {
+      "type": "decimal"
+    },
+    "disponible": {
+      "type": "boolean",
+      "default": true
+    },
+    "users_permissions_users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "profesionals"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "profesional"
+    },
+    "turnos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::turno.turno",
+      "mappedBy": "profesional"
+    },
+    "resenas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::resena.resena",
+      "mappedBy": "profesional"
+    },
+    "hitorial_clinicos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::hitorial-clinico.hitorial-clinico",
+      "mappedBy": "profesional"
+    }
+  }
+}
